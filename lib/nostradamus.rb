@@ -4,7 +4,7 @@ module Nostradamus
   MINUTES_REGEX = /[0-9]*:([0-9]*).*/
   SECONDS_REGEX = /[0-9]*:[0-9]*:([0-9]*)/
 
-  def parser(human_time)
+  def parse(human_time)
     convert(human_time, :to => :seconds)
   end
 
