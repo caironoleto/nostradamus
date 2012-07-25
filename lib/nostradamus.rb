@@ -5,11 +5,15 @@ module Nostradamus
   SECONDS_REGEX = /[0-9]*:[0-9]*:([0-9]*)/
 
   def parse(human_time)
-    convert(human_time, :to => :seconds)
+    if human_time
+      convert(human_time, :to => :seconds)
+    end
   end
 
   def humanize(seconds, format = nil)
-    convert(seconds, :to => :human_time, :format => format)
+    if seconds
+      convert(seconds, :to => :human_time, :format => format)
+    end
   end
 
   private

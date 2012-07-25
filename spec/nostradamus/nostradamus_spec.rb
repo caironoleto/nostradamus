@@ -9,6 +9,12 @@ describe Nostradamus do
       described_class.parse("12:15").should eq 44100
       described_class.parse("12:15:15").should eq 44115
     end
+
+    it "should not raise error without value" do
+      expect {
+        described_class.parse(nil)
+      }.to_not raise_error
+    end
   end
 
   context "seconds to human time" do
@@ -17,6 +23,12 @@ describe Nostradamus do
       described_class.humanize(44100).should eq "12:15:00"
       described_class.humanize(44115).should eq "12:15:15"
       described_class.humanize(44115, :short).should eq "12:15"
+    end
+
+    it "should not raise error without value" do
+      expect {
+        described_class.humanize(nil)
+      }.to_not raise_error
     end
   end
 end
