@@ -1,14 +1,14 @@
-#The `nostradamus` gem 
+#The Nostradamus gem 
 
 You can parse human time to seconds or convert seconds to human time.
 
 ## Install nostradamus gem
 
-### Add `nostradamus` in Gemfile and run `bundle install`.
+Add `nostradamus` in Gemfile and run `bundle install`.
 
 	gem "nostradamus"
 
-### Or only `gem install nostradamus` on terminal.
+Or only execute `gem install nostradamus` on terminal.
 
 ## How to use
 
