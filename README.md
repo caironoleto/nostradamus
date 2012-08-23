@@ -24,7 +24,7 @@ Or only execute `gem install nostradamus` on terminal.
 
 ## Contributions
 
-If you wont to contribute, please:
+If you want contribute, please:
 
 	* Fork the project.
 	* Make your feature addition or bug fix.	
