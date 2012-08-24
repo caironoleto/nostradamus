@@ -11,6 +11,12 @@ describe Nostradamus::Convert do
       described_class.new("12:15:15", :to => :seconds).should eq 44115
     end
 
+    context "#to_i" do
+      it "should return seconds" do
+        described_class.new("12:15:15", :to => :seconds).to_i.should eq 44115
+      end
+    end
+
     context "sum seconds" do
       let :time do
         described_class.new("12:00", :to => :seconds) + 60
@@ -32,6 +38,12 @@ describe Nostradamus::Convert do
       described_class.new(44100, :to => :human_time).should eq "12:15:00"
       described_class.new(44115, :to => :human_time).should eq "12:15:15"
       described_class.new(44115, :to => :human_time, :format => :short).should eq "12:15"
+    end
+
+    context "#to_i" do
+      it "should return seconds" do
+        described_class.new(44115, :to => :human_time, :format => :short).to_i.should eq 44115
+      end
     end
 
     context "sum seconds" do

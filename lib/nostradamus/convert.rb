@@ -17,6 +17,10 @@ module Nostradamus
       self.class.new(time_in_seconds + value)
     end
 
+    def to_i
+      time_in_seconds
+    end
+
     private
 
     def convert
