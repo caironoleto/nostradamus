@@ -1,8 +1,13 @@
 require 'spec_helper'
 require 'nostradamus'
+require 'nostradamus/convert'
 
 describe Nostradamus do
   context "human time to seconds" do
+    it "should be a instance of Nostradamus::Convert" do
+      described_class.parse("12:00").should be_instance_of Nostradamus::Convert
+    end
+
     it "should parse human time to seconds" do
       described_class.parse("12:00").should eq 43200
       described_class.parse("12:00:00").should eq 43200
@@ -18,6 +23,10 @@ describe Nostradamus do
   end
 
   context "seconds to human time" do
+    it "should be a instance of Nostradamus::Convert" do
+      described_class.humanize(43200, :short).should be_instance_of Nostradamus::Convert
+    end
+
     it "should convert seconds to human time" do
       described_class.humanize(43200, :short).should eq "12:00"
       described_class.humanize(44100).should eq "12:15:00"
