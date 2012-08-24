@@ -13,6 +13,10 @@ module Nostradamus
       convert == value
     end
 
+    def +(value)
+      self.class.new(time_in_seconds + value)
+    end
+
     private
 
     def convert
