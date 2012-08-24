@@ -21,6 +21,17 @@ module Nostradamus
       time_in_seconds
     end
 
+    def to_s(format = nil)
+
+      hours, minutes, seconds = extract_time_from_seconds(time_in_seconds)
+
+      if format == :short
+        "#{hours}:#{"%02d" % minutes}"
+      else
+        "#{hours}:#{"%02d" % minutes}:#{"%02d" % seconds}"
+      end
+    end
+
     private
 
     def convert
