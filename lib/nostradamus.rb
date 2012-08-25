@@ -1,40 +1,58 @@
-module Nostradamus
-  extend self
+class Nostradamus
   HOURS_REGEX   = /^([0-9]*):.*/
   MINUTES_REGEX = /[0-9]*:([0-9]*).*/
   SECONDS_REGEX = /[0-9]*:[0-9]*:([0-9]*)/
 
-  def parse(human_time)
+  def self.parse(human_time)
     if human_time
-      convert(human_time, :to => :seconds)
+      new(human_time).to_i
     end
   end
 
-  def humanize(seconds, format = nil)
+  def self.humanize(seconds, format = nil)
     if seconds
-      convert(seconds, :to => :human_time, :format => format)
+      new(seconds).to_s(format)
+    end
+  end
+
+  def initialize(time)
+    @time = time
+  end
+
+  def ==(value)
+    to_i == self.class.new(value).to_i
+  end
+
+  def +(value)
+    self.class.new(time_in_seconds + value.to_i)
+  end
+
+  def to_i
+    time_in_seconds
+  end
+
+  def to_s(format = nil)
+    hours, minutes, seconds = extract_time_from_seconds(time_in_seconds)
+
+    if format == :short
+      "#{hours}:#{"%02d" % minutes}"
+    else
+      "#{hours}:#{"%02d" % minutes}:#{"%02d" % seconds}"
     end
   end
 
   private
 
-  def convert(time, params)
-    case params[:to]
-    when :seconds
-      hours = extract_hours_from_human_time(time)
-      minutes = extract_minutes_from_human_time(time)
-      seconds = extract_seconds_from_human_time(time)
+  def time_in_seconds
+    @seconds ||= if @time.is_a?(String)
+                   hours = extract_hours_from_human_time(@time)
+                   minutes = extract_minutes_from_human_time(@time)
+                   seconds = extract_seconds_from_human_time(@time)
 
-      (hours * 3600) + (minutes * 60) + (seconds)
-    when :human_time
-      hours, minutes, seconds = extract_time_from_seconds(time)
-
-      if params[:format] && params[:format] == :short
-        "#{hours}:#{"%02d" % minutes}"
-      else
-        "#{hours}:#{"%02d" % minutes}:#{"%02d" % seconds}"
-      end
-    end
+                   (hours * 3600) + (minutes * 60) + (seconds)
+                 else
+                   @time
+                 end
   end
 
   def extract_hours_from_human_time(time)
