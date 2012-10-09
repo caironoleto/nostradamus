@@ -46,6 +46,12 @@ Nostradamus.new("12:00") == 43260
 Nostradamus.new("00:01:00") == Nostradamus.new(60)
 ```
 
+### Returning a Time object
+```
+Nostradamus.new("12:00").to_time # => Returns a object: Time.new(CURRENT_YEAR, CURRENT_MONTH, CURRENT_DAY, 12, 0)
+Nostradamus.new("12:00").to_time(:on => Date.new(2012, 5, 1)) # => Returns a object: Time.new(2012, 5, 1, 12, 0)
+```
+
 ## Contributions
 
 If you want contribute, please:

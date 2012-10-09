@@ -145,4 +145,28 @@ describe Nostradamus do
       end
     end
   end
+
+  context "convert seconds to time object" do
+    context "without a base date" do
+      let :today do
+        Date.today
+      end
+
+      it "return a today time object" do
+        described_class.new(43200).to_time.should eq Time.new(today.year, today.month, today.day, 12, 0)
+        described_class.new("12:00").to_time.should eq Time.new(today.year, today.month, today.day, 12, 0)
+      end
+    end
+
+    context "with a base date" do
+      let :date do
+        Date.new(2012, 10, 1)
+      end
+
+      it "uses a date to return a time object" do
+        described_class.new(43200).to_time(:on => date).should eq Time.new(date.year, date.month, date.day, 12, 0)
+        described_class.new("12:00").to_time(:on => date).should eq Time.new(date.year, date.month, date.day, 12, 0)
+      end
+    end
+  end
 end

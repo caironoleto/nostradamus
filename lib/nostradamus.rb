@@ -1,3 +1,5 @@
+require 'date'
+
 class Nostradamus
   HOURS_REGEX   = /^([0-9]*):.*/
   MINUTES_REGEX = /[0-9]*:([0-9]*).*/
@@ -39,6 +41,13 @@ class Nostradamus
     else
       "#{hours}:#{"%02d" % minutes}:#{"%02d" % seconds}"
     end
+  end
+
+  def to_time(params = {})
+    date = params[:on] || Date.today
+    hours, minutes, seconds = extract_time_from_seconds(time_in_seconds)
+
+    Time.new(date.year, date.month, date.day, hours, minutes)
   end
 
   private
