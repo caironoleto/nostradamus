@@ -47,7 +47,7 @@ class Nostradamus
     date = params[:on] || Date.today
     hours, minutes, seconds = extract_time_from_seconds(time_in_seconds)
 
-    Time.new(date.year, date.month, date.day, hours, minutes)
+    Time.zone.local(date.year, date.month, date.day, hours, minutes)
   end
 
   private

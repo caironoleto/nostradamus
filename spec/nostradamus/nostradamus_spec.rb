@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'nostradamus'
 
 describe Nostradamus do
   context "#parse" do
@@ -153,8 +152,8 @@ describe Nostradamus do
       end
 
       it "return a today time object" do
-        described_class.new(43200).to_time.should eq Time.new(today.year, today.month, today.day, 12, 0)
-        described_class.new("12:00").to_time.should eq Time.new(today.year, today.month, today.day, 12, 0)
+        described_class.new(43200).to_time.should eq Time.zone.local(today.year, today.month, today.day, 12, 0)
+        described_class.new("12:00").to_time.should eq Time.zone.local(today.year, today.month, today.day, 12, 0)
       end
     end
 
@@ -164,8 +163,8 @@ describe Nostradamus do
       end
 
       it "uses a date to return a time object" do
-        described_class.new(43200).to_time(:on => date).should eq Time.new(date.year, date.month, date.day, 12, 0)
-        described_class.new("12:00").to_time(:on => date).should eq Time.new(date.year, date.month, date.day, 12, 0)
+        described_class.new(43200).to_time(:on => date).should eq Time.zone.local(date.year, date.month, date.day, 12, 0)
+        described_class.new("12:00").to_time(:on => date).should eq Time.zone.local(date.year, date.month, date.day, 12, 0)
       end
     end
   end

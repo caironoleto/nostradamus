@@ -17,5 +17,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Nostradamus::Version::STRING
 
+  gem.add_dependency 'activesupport', '>= 3.2.8'
+  gem.add_dependency 'tzinfo', '>= 0.3.35'
+
   gem.add_development_dependency 'rspec', '>= 2.11.0'
 end
