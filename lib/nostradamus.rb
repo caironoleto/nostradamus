@@ -29,6 +29,14 @@ class Nostradamus
     self.class.new(time_in_seconds + value.to_i)
   end
 
+  def <(value)
+    to_i < self.class.new(value).to_i
+  end
+
+  def >(value)
+    to_i > self.class.new(value).to_i
+  end
+
   def to_i
     time_in_seconds
   end
