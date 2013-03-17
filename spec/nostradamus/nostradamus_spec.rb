@@ -39,6 +39,26 @@ describe Nostradamus do
       described_class.new("12:15:15").should eq 44115
     end
 
+    context "less (<)" do
+      it "should be less than 44115 seconds" do
+        described_class.new("12:00").should < 44115
+      end
+
+      it "should not be less than" do
+        described_class.new("12:00").should_not < 40115
+      end
+    end
+
+    context "greater (<)" do
+      it "should be greater than" do
+        described_class.new("12:00").should > 40115
+      end
+
+      it "should not be greater than" do
+        described_class.new("12:00").should_not > 44115
+      end
+    end
+
     context "#to_i" do
       it "should return seconds" do
         described_class.new("12:15:15").to_i.should eq 44115
@@ -94,6 +114,26 @@ describe Nostradamus do
       described_class.new(44100).should eq "12:15:00"
       described_class.new(44100).should eq "12:15"
       described_class.new(44115).should eq "12:15:15"
+    end
+
+    context "less (<)" do
+      it "should be less than 44115 seconds" do
+        described_class.new(43200).should < 44115
+      end
+
+      it "should not be less than" do
+        described_class.new(43200).should_not < 40115
+      end
+    end
+
+    context "greater (<)" do
+      it "should be greater than" do
+        described_class.new(43200).should > 40115
+      end
+
+      it "should not be greater than" do
+        described_class.new(43200).should_not > 44115
+      end
     end
 
     context "#to_i" do
