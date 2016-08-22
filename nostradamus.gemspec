@@ -20,5 +20,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'activesupport', '>= 5.0.0'
   gem.add_dependency 'tzinfo', '>= 0.3.33'
 
-  gem.add_development_dependency 'rspec', '>= 2.11.0'
+  gem.add_development_dependency 'rspec', '>= 3.5.0'
 end
