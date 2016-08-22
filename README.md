@@ -59,3 +59,7 @@ If you want contribute, please:
 	* Fork the project.
 	* Make your feature addition or bug fix.
 	* Send me a pull request on Github.
+
+## Code Status
+
+[![Build Status](https://travis-ci.org/caironoleto/nostradamus.svg?branch=master)](https://travis-ci.org/caironoleto/nostradamus)
