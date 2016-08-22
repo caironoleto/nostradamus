@@ -1,5 +1,5 @@
 class Nostradamus
   module Version
-    STRING = "0.0.3"
+    STRING = "1.0.0"
   end
 end
