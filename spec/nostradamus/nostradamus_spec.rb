@@ -3,10 +3,10 @@ require 'spec_helper'
 describe Nostradamus do
   context "#parse" do
     it "should parse human time to seconds" do
-      described_class.parse("12:00").should eq 43200
-      described_class.parse("12:00:00").should eq 43200
-      described_class.parse("12:15").should eq 44100
-      described_class.parse("12:15:15").should eq 44115
+      expect(described_class.parse("12:00")).to eq 43200
+      expect(described_class.parse("12:00:00")).to eq 43200
+      expect(described_class.parse("12:15")).to eq 44100
+      expect(described_class.parse("12:15:15")).to eq 44115
     end
 
     it "should not raise error without value" do
@@ -18,10 +18,10 @@ describe Nostradamus do
 
   context "#humanize" do
     it "should convert seconds to human time" do
-      described_class.humanize(43200, :short).should eq "12:00"
-      described_class.humanize(44100).should eq "12:15:00"
-      described_class.humanize(44115).should eq "12:15:15"
-      described_class.humanize(44115, :short).should eq "12:15"
+      expect(described_class.humanize(43200, :short)).to eq "12:00"
+      expect(described_class.humanize(44100)).to eq "12:15:00"
+      expect(described_class.humanize(44115)).to eq "12:15:15"
+      expect(described_class.humanize(44115, :short)).to eq "12:15"
     end
 
     it "should not raise error without value" do
@@ -33,35 +33,35 @@ describe Nostradamus do
 
   context "convert human time to seconds" do
     it "should compare human time to seconds" do
-      described_class.new("12:00").should eq 43200
-      described_class.new("12:00:00").should eq 43200
-      described_class.new("12:15").should eq 44100
-      described_class.new("12:15:15").should eq 44115
+      expect(described_class.new("12:00")).to eq 43200
+      expect(described_class.new("12:00:00")).to eq 43200
+      expect(described_class.new("12:15")).to eq 44100
+      expect(described_class.new("12:15:15")).to eq 44115
     end
 
     context "less (<)" do
       it "should be less than 44115 seconds" do
-        described_class.new("12:00").should < 44115
+        expect(described_class.new("12:00")).to be < 44115
       end
 
       it "should not be less than" do
-        described_class.new("12:00").should_not < 40115
+        expect(described_class.new("12:00")).to_not be < 40115
       end
     end
 
     context "greater (<)" do
       it "should be greater than" do
-        described_class.new("12:00").should > 40115
+        expect(described_class.new("12:00")).to be > 40115
       end
 
       it "should not be greater than" do
-        described_class.new("12:00").should_not > 44115
+        expect(described_class.new("12:00")).to_not be > 44115
       end
     end
 
     context "#to_i" do
       it "should return seconds" do
-        described_class.new("12:15:15").to_i.should eq 44115
+        expect(described_class.new("12:15:15").to_i).to eq 44115
       end
     end
 
@@ -71,11 +71,11 @@ describe Nostradamus do
       end
 
       it "should return formatted time with seconds" do
-        subject.to_s.should eq "12:00:00"
+        expect(subject.to_s).to eq "12:00:00"
       end
 
       it "should return short formatted time" do
-        subject.to_s(:short).should eq "12:00"
+        expect(subject.to_s(:short)).to eq "12:00"
       end
     end
 
@@ -85,11 +85,11 @@ describe Nostradamus do
       end
 
       it "should be a instance of Nostradamus" do
-        time.should be_instance_of Nostradamus
+        expect(time).to be_instance_of Nostradamus
       end
 
       it "should sum 60 seconds" do
-        time.should eq 43260
+        expect(time).to eq 43260
       end
     end
 
@@ -99,46 +99,46 @@ describe Nostradamus do
       end
 
       it "should be a instance of Nostradamus" do
-        time.should be_instance_of Nostradamus
+        expect(time).to be_instance_of Nostradamus
       end
 
       it "should sum 60 seconds" do
-        time.should eq 43260
+        expect(time).to eq 43260
       end
     end
   end
 
   context "convert seconds to human time" do
     it "should compare seconds to human time" do
-      described_class.new(43200).should eq "12:00"
-      described_class.new(44100).should eq "12:15:00"
-      described_class.new(44100).should eq "12:15"
-      described_class.new(44115).should eq "12:15:15"
+      expect(described_class.new(43200)).to eq "12:00"
+      expect(described_class.new(44100)).to eq "12:15:00"
+      expect(described_class.new(44100)).to eq "12:15"
+      expect(described_class.new(44115)).to eq "12:15:15"
     end
 
     context "less (<)" do
       it "should be less than 44115 seconds" do
-        described_class.new(43200).should < 44115
+        expect(described_class.new(43200)).to be < 44115
       end
 
       it "should not be less than" do
-        described_class.new(43200).should_not < 40115
+        expect(described_class.new(43200)).to_not be < 40115
       end
     end
 
     context "greater (<)" do
       it "should be greater than" do
-        described_class.new(43200).should > 40115
+        expect(described_class.new(43200)).to be > 40115
       end
 
       it "should not be greater than" do
-        described_class.new(43200).should_not > 44115
+        expect(described_class.new(43200)).to_not be > 44115
       end
     end
 
     context "#to_i" do
       it "should return seconds" do
-        described_class.new(44115).to_i.should eq 44115
+        expect(described_class.new(44115).to_i).to eq 44115
       end
     end
 
@@ -148,11 +148,11 @@ describe Nostradamus do
       end
 
       it "should return formatted time with seconds" do
-        subject.to_s.should eq "12:15:15"
+        expect(subject.to_s).to eq "12:15:15"
       end
 
       it "should return short formatted time" do
-        subject.to_s(:short).should eq "12:15"
+        expect(subject.to_s(:short)).to eq "12:15"
       end
     end
 
@@ -162,11 +162,11 @@ describe Nostradamus do
       end
 
       it "should be a instance of Nostradamus" do
-        time.should be_instance_of Nostradamus
+        expect(time).to be_instance_of Nostradamus
       end
 
       it "should sum 60 seconds" do
-        time.should eq 43260
+        expect(time).to eq 43260
       end
     end
 
@@ -176,11 +176,11 @@ describe Nostradamus do
       end
 
       it "should be a instance of Nostradamus" do
-        time.should be_instance_of Nostradamus
+        expect(time).to be_instance_of Nostradamus
       end
 
       it "should sum 60 seconds" do
-        time.should eq 43260
+        expect(time).to eq 43260
       end
     end
   end
@@ -192,8 +192,8 @@ describe Nostradamus do
       end
 
       it "return a today time object" do
-        described_class.new(43200).to_time.should eq Time.zone.local(today.year, today.month, today.day, 12, 0)
-        described_class.new("12:00").to_time.should eq Time.zone.local(today.year, today.month, today.day, 12, 0)
+        expect(described_class.new(43200).to_time).to eq Time.zone.local(today.year, today.month, today.day, 12, 0)
+        expect(described_class.new("12:00").to_time).to eq Time.zone.local(today.year, today.month, today.day, 12, 0)
       end
     end
 
@@ -203,8 +203,8 @@ describe Nostradamus do
       end
 
       it "uses a date to return a time object" do
-        described_class.new(43200).to_time(:on => date).should eq Time.zone.local(date.year, date.month, date.day, 12, 0)
-        described_class.new("12:00").to_time(:on => date).should eq Time.zone.local(date.year, date.month, date.day, 12, 0)
+        expect(described_class.new(43200).to_time(:on => date)).to eq Time.zone.local(date.year, date.month, date.day, 12, 0)
+        expect(described_class.new("12:00").to_time(:on => date)).to eq Time.zone.local(date.year, date.month, date.day, 12, 0)
       end
     end
   end
