@@ -1,11 +1,7 @@
 require 'bundler/setup'
-require 'active_support'
-require 'active_support/core_ext'
 require 'tzinfo'
 
 require 'nostradamus'
-
-Time.zone = 'Pacific Time (US & Canada)'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true

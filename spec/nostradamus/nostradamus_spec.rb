@@ -192,8 +192,8 @@ describe Nostradamus do
       end
 
       it "return a today time object" do
-        expect(described_class.new(43200).to_time).to eq Time.zone.local(today.year, today.month, today.day, 12, 0)
-        expect(described_class.new("12:00").to_time).to eq Time.zone.local(today.year, today.month, today.day, 12, 0)
+        expect(described_class.new(43200).to_time).to eq Time.utc(today.year, today.month, today.day, 12, 0)
+        expect(described_class.new("12:00").to_time).to eq Time.utc(today.year, today.month, today.day, 12, 0)
       end
     end
 
@@ -203,8 +203,8 @@ describe Nostradamus do
       end
 
       it "uses a date to return a time object" do
-        expect(described_class.new(43200).to_time(:on => date)).to eq Time.zone.local(date.year, date.month, date.day, 12, 0)
-        expect(described_class.new("12:00").to_time(:on => date)).to eq Time.zone.local(date.year, date.month, date.day, 12, 0)
+        expect(described_class.new(43200).to_time(:on => date)).to eq Time.utc(date.year, date.month, date.day, 12, 0)
+        expect(described_class.new("12:00").to_time(:on => date)).to eq Time.utc(date.year, date.month, date.day, 12, 0)
       end
     end
   end
