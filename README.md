@@ -1,4 +1,4 @@
-#The Nostradamus gem
+# The Nostradamus gem
 
 You can parse human time to seconds or convert seconds to human time.
 
@@ -52,13 +52,13 @@ Nostradamus.new("12:00").to_time # => Returns a object: Time.new(CURRENT_YEAR, C
 Nostradamus.new("12:00").to_time(:on => Date.new(2012, 5, 1)) # => Returns a object: Time.new(2012, 5, 1, 12, 0)
 ```
 
-## Contributions
+## Contributing
 
-If you want contribute, please:
+If you want to contribute, please:
 
-	* Fork the project.
-	* Make your feature addition or bug fix.
-	* Send me a pull request on Github.
+* Fork the project.
+* Make your feature addition or bug fix.
+* Send me a pull request on Github.
 
 ## Code Status
 
