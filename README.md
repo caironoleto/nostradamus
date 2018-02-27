@@ -13,19 +13,19 @@ Or only execute `gem install nostradamus` on terminal.
 ## How to use
 
 ### Human time to seconds:
-```
+```ruby
 Nostradamus.parse("10:00") # => 36000
 Nostradamus.parse("10:00:00") # => 36000
 ```
 
 ### Seconds to human time:
-```
+```ruby
 Nostradamus.humanize(36000, :short) # => "10:00"
 Nostradamus.humanize(36000) # => "10:00:00"
 ```
 
 ### Sum with seconds
-```
+```ruby
 time = Nostradamus.new("12:00") + 60
 time.to_i # => 43260
 time.to_s # => "12:01:00"
@@ -33,7 +33,7 @@ time.to_s(:short) # => "12:01"
 ```
 
 ### Sum with another Nostradamus instance
-```
+```ruby
 time = Nostradamus.new("12:00") + Nostradamus.new(60)
 time.to_i # => 43260
 time.to_s # => "12:01:00"
@@ -41,13 +41,13 @@ time.to_s(:short) # => "12:01"
 ```
 
 ### Compare times
-```
+```ruby
 Nostradamus.new("12:00") == 43260
 Nostradamus.new("00:01:00") == Nostradamus.new(60)
 ```
 
 ### Returning a Time object
-```
+```ruby
 Nostradamus.new("12:00").to_time # => Returns a object: Time.new(CURRENT_YEAR, CURRENT_MONTH, CURRENT_DAY, 12, 0)
 Nostradamus.new("12:00").to_time(:on => Date.new(2012, 5, 1)) # => Returns a object: Time.new(2012, 5, 1, 12, 0)
 ```
